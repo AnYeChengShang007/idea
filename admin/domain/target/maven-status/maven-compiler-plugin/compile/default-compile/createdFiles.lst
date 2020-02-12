@@ -1,0 +1,7 @@
+com\fjx\domain\Role.class
+com\fjx\domain\Permission.class
+com\fjx\domain\Member.class
+com\fjx\domain\Product.class
+com\fjx\domain\UserInfo.class
+com\fjx\domain\Orders.class
+com\fjx\domain\Traveller.class

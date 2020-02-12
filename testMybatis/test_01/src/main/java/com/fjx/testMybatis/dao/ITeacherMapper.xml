@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fjx.testMybatis.dao.ITeacherMapper">
+
+    <resultMap id="teacher" type="teacher">
+        <result column="id" javaType="int" property="id"/>
+        <collection property="students" column="id" javaType="list" ofType="student" select="findStudents"/>
+    </resultMap>
+
+    <select id="findById" parameterType="int" resultMap="teacher">
+        select * from teacher where id = #{val}
+    </select>
+
+    <select id="findStudents" parameterType="int" resultType="student">
+        select * from student where id in(select sid from student_teacher WHERE tid = #{val})
+    </select>
+
+</mapper>

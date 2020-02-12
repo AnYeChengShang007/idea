@@ -1,0 +1,7 @@
+com\fjx\dao\IUserDao.class
+com\fjx\dao\IRoleDao.class
+com\fjx\dao\ITravellerDao.class
+com\fjx\dao\IProductDao.class
+com\fjx\dao\IMemberDao.class
+com\fjx\dao\IOrderDao.class
+com\fjx\dao\IPermissionDao.class

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fjx.crud.dao.IUserDao">
+
+    <resultMap id="user" type="com.fjx.crud.domain.User">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="birthday" column="birthday"/>
+        <result property="sex" column="sex"/>
+        <result property="address" column="address"/>
+    </resultMap>
+    <select id="findAll" resultType="com.fjx.crud.domain.User">
+        select * from user
+    </select>
+    <select id="findOne" parameterType="Integer" resultMap="user">
+        select * from user where id = #{uid}
+    </select>
+    <select id="findTotal" resultType="Integer">
+        select count(*) from user
+    </select>
+    <select id="findByName" parameterType="String" resultMap="user">
+        select * from user where username like "%"#{value}"%"
+    </select>
+    <insert id="add" parameterType="com.fjx.crud.domain.User">
+        insert into user(username,birthday,sex,address) values (#{username},#{birthday},#{sex},#{address})
+    </insert>
+    <update id="update" parameterType="com.fjx.crud.domain.User">
+        update user set username = #{username},birthday = #{birthday},sex = #{sex},address=#{address} where id = #{id}
+    </update>
+    <delete id="delete" parameterType="Integer">
+        delete from user where id=#{id}
+    </delete>
+    <insert id="last_insert_id" parameterType="com.fjx.crud.domain.User">
+        <selectKey resultType="Integer" order="AFTER" keyProperty="id" keyColumn="id">
+            select last_insert_id()
+        </selectKey>
+        insert into user(username,birthday,sex,address) values (#{username},#{birthday},#{sex},#{address})
+    </insert>
+    <select id="findOne2" parameterType="com.fjx.crud.domain.vo.QueryVo"  resultMap="user">
+        select * from user where username like "%"#{user.username}"%"
+    </select>
+</mapper>

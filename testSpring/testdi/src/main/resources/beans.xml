@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="address" class="com.fjx.testdi.pojo.Address">
+        <property name="addName" value="南京"/>
+    </bean>
+    <bean id="user" class="com.fjx.testdi.pojo.User">
+        <property name="name" value="zhangsan"/>
+        <property name="address" ref="address"/>
+        <property name="books">
+            <array>
+                <value>三国杀</value>
+                <value>四国杀</value>
+                <value>五国杀</value>
+            </array>
+        </property>
+        <property name="list">
+            <list>
+                <value>红石</value>
+                <value>水晶</value>
+                <value>绿宝石</value>
+            </list>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="url" value="http://"/>
+            </map>
+        </property>
+        <property name="set">
+            <set>
+                <value>年轻</value>
+                <value>中年</value>
+                <value>老年</value>
+            </set>
+        </property>
+        <property name="wife">
+            <null/>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="url">url</prop>
+                <prop key="username">username</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>

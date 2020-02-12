@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fjx.crud.dao.IAccountDao">
+    <resultMap id="a" type="AccountUser">
+        <id column="aid" property="id"/>
+        <result column="id" property="uid"/>
+        <result column="money" property="money"/>
+        <association property="user" column="id" javaType="user">
+            <id column="id" property="id"/>
+            <result column="username" property="username"/>
+            <result column="sex" property="sex"/>
+            <result column="birthday" property="birthday"/>
+            <result column="address" property="address"/>
+        </association>
+    </resultMap>
+    <select id="findAll" resultType="account">
+        select * from account;
+    </select>
+    <select id="findAll2" resultMap="a">
+        select account.id aid,money,user.id,username,birthday,sex,address from user,account where user.id=account.uid
+    </select>
+</mapper>
